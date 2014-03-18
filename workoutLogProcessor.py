@@ -9,6 +9,11 @@ def annotate_press_volume(filename):
     f = open(filename)
     for line in f.readlines():
         if line.startswith("** "):
+            if mode == CANDP_MODE:
+                mode = NEUTRAL_MODE
+                print "Press volume = %skg" % volume
+                volume = 0
+                
             print line.strip()
         if line.startswith("***"):
             if (line.find("C&P") > 0):
